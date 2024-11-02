@@ -1,0 +1,76 @@
+-- what was the cheapest most avaliable listing in Jan 2024?
+
+select * from(
+select source_uid, 
+       price, 
+	   availability_30,
+	   extract(month from last_scraped) as month,
+	   extract(Year from last_scraped) as Year
+from fact_listings) as t
+where price > 0 and availability_30 <= 30 and month = 1 and year = 2024
+order by availability_30 desc, price
+limit 1;
+
+-- what are the most reviewed listings in November 2023 ?
+select source_uid, number_of_reviews from(
+select source_uid, 
+       number_of_reviews,
+	   extract(month from last_scraped) as month,
+	   extract(Year from last_scraped) as Year
+from fact_listings) as t
+where month = 11 and year = 2023
+order by number_of_reviews desc
+limit 1;
+
+-- what is the most expensive neighbourhood in Barcelona? 
+select neighbourhood, price 
+from dim_location l inner join fact_listings f
+on l.listing_uid = f.source_uid
+where price > 0
+order by price desc
+limit 1;
+
+-- Recommend me a listing if I am :
+-- A man with his wife and 2 children looking for a week vacation around March 2024.
+
+select source_uid, 
+       bedrooms, 
+	   beds, 
+	   minimum_nights, 
+	   maximum_nights,
+	   month,
+	   Year
+from(select *,
+	   extract(month from last_scraped) as month,
+	   extract(Year from last_scraped) as Year
+from fact_listings f inner join dim_host h
+on h.listing_uid = f.source_uid) as t
+where bedrooms = 2 
+      and beds = 3 
+	  and minimum_nights = 2 
+	  and maximum_nights = 3
+	  and month = 3
+	  and Year = 2024;
+
+-- Recommend me a listing if I am :
+-- A colleage student with 4 other students who don't have alot of money and want to spend the new year's eve in Barcelona with perhaps two days before and/or two days after.
+
+select source_uid, 
+       bedrooms, 
+	   beds, 
+	   minimum_nights, 
+	   maximum_nights,
+	   month,
+	   Year
+from(select *,
+	   extract(month from last_scraped) as month,
+	   extract(Year from last_scraped) as Year
+from fact_listings f inner join dim_host h
+on h.listing_uid = f.source_uid) as t
+where bedrooms = 2 
+      and beds = 5 
+	  and minimum_nights = 3 
+	  and maximum_nights = 5
+	  and availability_30 = 30
+	  and month = 12
+	  and Year = 2024;

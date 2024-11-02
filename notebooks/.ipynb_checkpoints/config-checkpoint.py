@@ -10,20 +10,21 @@ POSTGRS_CREDENTIALS = {
 
 
 DWH_DIMS_FACTS = {
-            "dim_host":["host_id", "host_name", "host_url", 
+            "dim_host":["uid","host_id", "host_name", "host_url", 
                         "host_since","host_about", "host_response_rate",
                         "host_total_listings_count", "host_verifications",
                         "host_identity_verified", "accommodates", "bathrooms",
                         "bedrooms", "beds"],
 
-            "dim_location": ["host_location", "neighbourhood", "latitude",
+            "dim_location": ["uid","host_location", "neighbourhood", "latitude",
                             "longitude", "region_name", "region_parent_name", 
                             "region_parent_parent_name"],
 
-            "dim_property": ["property_type", "room_type"],
-            "fact_listings":["price", "maximum_nights","minimum_nights",
+            "dim_property": ["uid","property_type"],
+            "dim_room": ["uid","room_type"],
+            "fact_listings":["uid","listing_url","price", "maximum_nights","minimum_nights",
                              "number_of_reviews","availability_30",
-                             "availability_60", "availability_90","availability_365"]
+                             "availability_60", "availability_90","availability_365", "last_scraped"]
            }
 
 DATA_COLS = ['id', 'listing_url', 'scrape_id', 'last_searched', 'last_scraped',
@@ -54,3 +55,5 @@ DATA_COLS = ['id', 'listing_url', 'scrape_id', 'last_searched', 'last_scraped',
        'region_name', 'region_parent_id', 'region_parent_name',
        'region_parent_parent_id', 'region_parent_parent_name',
        'reviews_per_month']
+
+QUALITY_CHECKS = {"property_type":[]}
