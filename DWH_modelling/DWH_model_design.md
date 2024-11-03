@@ -29,5 +29,6 @@
           availability_30, availability_60, availability_90, availability_365
 
 
-![image](https://github.com/user-attachments/assets/f85fd5fe-dce3-40f9-9612-8626d788ae77)
+![DWH_schema](https://github.com/user-attachments/assets/e1fa43ae-1c28-459f-8a29-72607e1263ae)
+
 
