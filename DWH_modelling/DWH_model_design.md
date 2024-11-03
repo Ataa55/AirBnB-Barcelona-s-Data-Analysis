@@ -26,4 +26,8 @@
       
         - price of the room is really very obvious and important fact.
         - also another facts like, minimum_nights, maximum_nights, number_of_reviews,
-          availability_30, availability_60, availability_90, availability_365 
+          availability_30, availability_60, availability_90, availability_365
+
+
+![image](https://github.com/user-attachments/assets/f85fd5fe-dce3-40f9-9612-8626d788ae77)
+
