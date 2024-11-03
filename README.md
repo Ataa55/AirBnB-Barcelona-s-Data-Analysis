@@ -20,4 +20,5 @@ We are going to work on Airbnb's data for Barcelona to achieve the following
       -  A man with his wife and 2 children looking for a week vacation around March 2024.
       -  A colleage student with 4 other students who don't have alot of money and want to spend the new year's eve in Barcelona with perhaps two days before and/or two days after.
 
+![image](https://github.com/user-attachments/assets/5ffe611c-efcd-4ec6-9a51-5d8ea84860db)
 
